@@ -1,20 +1,9 @@
-class Amenaker {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.index = 4;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x + 1, this.y],
-            [this.x + 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x - 1, this.y + 1],
-            [this.x - 1, this.y],
-        ];
-        this.energy = 90;
+class Amenaker extends Jarangutyun {
+    constructor(x, y, index){
+        super(x, y, index);
+        
     }
+
     getNewCoordinates() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -27,17 +16,9 @@ class Amenaker {
             [this.x - 1, this.y],
         ];
     }
-    chooseNearFieldsByIndex(ch) {
+    chooseCell(character) {
         this.getNewCoordinates();
-        var found = [];
-        for (var i = 0; i < this.directions.length; i++) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (matrix[y] && matrix[y][x] == ch) {
-                found.push(this.directions[i]);
-            }
-        }
-        return found;
+        return super.chooseCell(character);
     }
     move() {
         var field = random(this.chooseNearFieldsByIndex(0));

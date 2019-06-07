@@ -1,4 +1,4 @@
-class Gishatich extends LivingCreature {
+class Gishatich extends Jarangutyun {
     constructor(x, y, index){
         super(x, y, index);
         
@@ -16,9 +16,9 @@ class Gishatich extends LivingCreature {
             [this.x - 1, this.y],
         ];
     }
-    chooseCell(ch) {
+    chooseCell(character) {
         this.getNewCoordinates();
-        return super.chooseCell(ch);
+        return super.chooseCell(character);
     }
  
    
