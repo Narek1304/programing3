@@ -1,5 +1,3 @@
-
-//! Setup function fires automatically
 function setup() {
 
     var socket = io();
@@ -20,6 +18,10 @@ function setup() {
         //! after getting data pass it to matrix variable
         matrix = data.matrix;
         grassCountElement.innerText = data.grassCounter;
+        grassEaterCountElement.innerText = data.grassEaterCounter;
+        // YellowEaterCountElement.innerText = data.YellowEaterCounter;
+        // PredatorCountElement.innerText = data.PredatorCounter;
+        // FinalHeroCountElement.innerText = data.FinalHeroCounter;
         //! Every time it creates new Canvas woth new matrix size
         createCanvas(matrix[0].length * side, matrix.length * side)
         //! clearing background by setting it to new grey color

@@ -115,6 +115,7 @@ module.exports = class Predator extends LiveForm {
             predatorArr.push(newpredator);
             matrix[newCell[1]][newCell[0]] = 4;
             this.energy = 5;
+            PredatorHashiv++;
         }
     }
     die() {

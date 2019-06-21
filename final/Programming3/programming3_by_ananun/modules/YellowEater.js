@@ -90,6 +90,7 @@ module.exports = class YellowEater extends LiveForm {
             yellowEaterArr.push(newYellowEater);
             matrix[newCell[1]][newCell[0]] = 3;
             this.energy = 5;
+            YellowEaterHashiv++;
         }
     }
     die() {

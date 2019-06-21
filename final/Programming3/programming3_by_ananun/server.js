@@ -16,6 +16,10 @@ YellowEaterArr = [];
 FinalHeroArr = [];
 matrix = [];
 grassHashiv = 0;
+grassEaterHashiv = 0;
+YellowEaterHashiv = 0;
+PredatorHashiv = 0;
+FinalHeroHashiv = 0;
 //! Setting global arrays  -- END
 
 
@@ -55,8 +59,8 @@ function matrixGenerator(matrixSize, grass, grassEater, YellowEater, Predator, F
         matrix[customY][customX] = 5;
     }
 }
-matrixGenerator(20, 1, 1);
-//! Creating MATRIX -- END
+matrixGenerator(20, 1, 1,);
+
 
 
 
@@ -83,20 +87,16 @@ function creatingObjects() {
             } else if (matrix[y][x] == 1) {
                 var grass = new Grass(x, y);
                 grassArr.push(grass);
-                grassHashiv++;
             } else if (matrix[y][x] == 3) {
                 var yellowEater = new YellowEater(x, y);
                 YellowEaterArr.push(yellowEater);
-                YellowEaterHashiv++;
             } else if (matrix[y][x] == 4) {
                 var predator = new Predator(x, y);
                 PredatorArr.push(predator);
-                PredatorHashiv++;
             } else if (matrix[y][x] == 5) {
                 var finalHero = new FinalHero(x, y);
                 FinalHeroArr.push(finalHero);
-                FinalHeroHashiv++;
-            } 
+            }
         }
     }
 }
@@ -106,52 +106,45 @@ function game() {
     if (grassArr[0] !== undefined) {
         for (var i in grassArr) {
             grassArr[i].mul();
+            grassHashiv++;
         }
     }
     if (grassEaterArr[0] !== undefined) {
         for (var i in grassEaterArr) {
             grassEaterArr[i].eat();
+            grassEaterHashiv++;
         }
     }
     if (YellowEaterArr[0] !== undefined) {
         for (var i in YellowEaterArr) {
             YellowEaterArr[i].eat();
+            YellowEaterHashiv++;
         }
     }
     if (PredatorArr[0] !== undefined) {
         for (var i in PredatorArr) {
             PredatorArr[i].eat();
+            PredatorHashiv++;
         }
     }
     if (FinalHeroArr[0] !== undefined) {
         for (var i in FinalHeroArr) {
             FinalHeroArr[i].eat();
+            FinalHeroHashiv++;
         }
     }
 
     //! Object to send
     let sendData = {
         matrix: matrix,
-        grassCounter: grassHashiv
-    }
-    let sendData = {
-        matrix: matrix,
-        grassEaterCounter: grassEaterHashiv
-    }
-    let sendData = {
-        matrix: matrix,
-        YellowEaterCounter: YellowEaterHashiv
-    }
-    let sendData = {
-        matrix: matrix,
-        PredatorCounter: PredatorHashiv
-    }
-    let sendData = {
-        matrix: matrix,
+        grassCounter: grassHashiv,
+        grassEaterCounter: grassEaterHashiv,
+        YellowEaterCounter: YellowEaterHashiv,
+        PredatorCounter: PredatorHashiv,
         FinalHeroCounter: FinalHeroHashiv
     }
+    
 
-    //! Send data over the socket to clients who listens "data"
     io.sockets.emit("data", sendData);
 }
 

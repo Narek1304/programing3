@@ -35,6 +35,7 @@ module.exports = class GrassEater extends LiveForm {
             let grassEater = new GrassEater(x, y);
             grassEaterArr.push(grassEater);
             this.life = 5;
+            grassEaterHashiv++;
         }
     }
     eat() {
