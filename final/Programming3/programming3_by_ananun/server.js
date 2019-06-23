@@ -59,7 +59,7 @@ function matrixGenerator(matrixSize, grass, grassEater, YellowEater, Predator, F
         matrix[customY][customX] = 5;
     }
 }
-matrixGenerator(20, 1, 1,);
+matrixGenerator(20, 1, 2, 2, 2, 1);
 
 
 
@@ -106,31 +106,31 @@ function game() {
     if (grassArr[0] !== undefined) {
         for (var i in grassArr) {
             grassArr[i].mul();
-            grassHashiv++;
+            
         }
     }
     if (grassEaterArr[0] !== undefined) {
         for (var i in grassEaterArr) {
             grassEaterArr[i].eat();
-            grassEaterHashiv++;
+            
         }
     }
     if (YellowEaterArr[0] !== undefined) {
         for (var i in YellowEaterArr) {
             YellowEaterArr[i].eat();
-            YellowEaterHashiv++;
+            
         }
     }
     if (PredatorArr[0] !== undefined) {
         for (var i in PredatorArr) {
             PredatorArr[i].eat();
-            PredatorHashiv++;
+           
         }
     }
     if (FinalHeroArr[0] !== undefined) {
         for (var i in FinalHeroArr) {
             FinalHeroArr[i].eat();
-            FinalHeroHashiv++;
+           
         }
     }
 

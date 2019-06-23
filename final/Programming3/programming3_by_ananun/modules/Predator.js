@@ -3,8 +3,7 @@ var random = require("./random.js");
 
 module.exports = class Predator extends LiveForm {
     constructor(x, y, index) {
-        this.x = x;
-        this.y = y;
+        super(x, y);
         this.index = index;
         this.energy = 10;
     }
@@ -41,17 +40,7 @@ module.exports = class Predator extends LiveForm {
 
     chooseCell(character) {
         this.getNewCoordinates();
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
+        return super.chooseCell(character);
     }
     //qayluma
     move() {
@@ -88,9 +77,9 @@ module.exports = class Predator extends LiveForm {
 
 
 
-            for (var i in yellowEaterArr) {
-                if (newX == yellowEaterArr[i].x && newY == yellowEaterArr[i].y) {
-                    yellowEaterArr.splice(i, 1);
+            for (var i in YellowEaterArr) {
+                if (newX == YellowEaterArr[i].x && newY == YellowEaterArr[i].y) {
+                    YellowEaterArr.splice(i, 1);
                     break;
                 }
             }
@@ -112,7 +101,7 @@ module.exports = class Predator extends LiveForm {
 
         if (this.energy >= 8 && newCell) {
             var newpredator = new Predator(newCell[0], newCell[1], this.index);
-            predatorArr.push(newpredator);
+            PredatorArr.push(newpredator);
             matrix[newCell[1]][newCell[0]] = 4;
             this.energy = 5;
             PredatorHashiv++;
@@ -121,9 +110,9 @@ module.exports = class Predator extends LiveForm {
     die() {
         if (this.energy <= 0) {
             matrix[this.x][this.y] = 0;
-            for (var i in predatorArr) {
-                if (this.x == predatorArr[i].x && this.y == predatorArr[i].y) {
-                    predatorArr.splice(i, 1);
+            for (var i in PredatorArr) {
+                if (this.x == PredatorArr[i].x && this.y == PredatorArr[i].y) {
+                    PredatorArr.splice(i, 1);
                     break;
                 }
             }

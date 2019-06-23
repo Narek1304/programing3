@@ -3,8 +3,7 @@ var random = require("./random.js");
 
 module.exports = class FinalHero extends LiveForm {
     constructor(x, y, index) {
-        this.x = x;
-        this.y = y;
+        super(x, y);
         this.index = index;
         this.energy = 10;
     }
@@ -41,18 +40,8 @@ module.exports = class FinalHero extends LiveForm {
 
     chooseCell(character) {
         this.getNewCoordinates();
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
-    }
+        return super.chooseCell(character);
+    } 
     //qayluma
     move() {
 
@@ -89,15 +78,15 @@ module.exports = class FinalHero extends LiveForm {
 
 
 
-            for (var i in predatorArr) {
-                if (newX == predatorArr[i].x && newY == predatorArr[i].y) {
-                    predatorArr.splice(i, 1);
+            for (var i in PredatorArr) {
+                if (newX == PredatorArr[i].x && newY == PredatorArr[i].y) {
+                    PredatorArr.splice(i, 1);
                     break;
                 }
             }
-            for(var i in yellowEaterArr){
-            if (newX == yellowEaterArr[i].x && newY == yellowEaterArr[i].y) {
-                yellowEaterArr.splice(i, 1);
+            for(var i in YellowEaterArr){
+            if (newX == YellowEaterArr[i].x && newY == YellowEaterArr[i].y) {
+                YellowEaterArr.splice(i, 1);
                 break;
             }
         }
@@ -114,8 +103,8 @@ module.exports = class FinalHero extends LiveForm {
         if (this.energy >= 8 && newCell) {
             // var newYellowEater = new YellowEater(newCell[0], newCell[1], this.index);
             // yellowEaterArr.push(newYellowEater);
-            var newfinalhero = new FinalHero(newCell[0], newCell[1], this.index);
-            finalheroArr.push(newfinalhero)
+            var newFinalHero = new FinalHero(newCell[0], newCell[1], this.index);
+            FinalHeroArr.push(newFinalHero)
             matrix[newCell[1]][newCell[0]] = 5;
             this.energy = 5;
         }
@@ -123,9 +112,9 @@ module.exports = class FinalHero extends LiveForm {
     die() {
         if (this.energy <= 0) {
             matrix[this.x][this.y] = 0;
-            for (var i in finalheroArr) {
-                if (this.x == finalheroArr[i].x && this.y == finalheroArr[i].y) {
-                    finalheroArr.splice(i, 1);
+            for (var i in FinalHeroArr) {
+                if (this.x == FinalHeroArr[i].x && this.y == FinalHeroArr[i].y) {
+                    FinalHeroArr.splice(i, 1);
                     break;
                 }
             }

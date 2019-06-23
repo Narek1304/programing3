@@ -9,6 +9,10 @@ function setup() {
     //! Getting DOM objects (HTML elements)
     let grassCountElement = document.getElementById('grassCount');
     let grassEaterCountElement = document.getElementById('grassEaterCount');
+    let YellowEaterCountElement = document.getElementById('YellowEaterCount');
+    let PredatorCountElement = document.getElementById('PredatorCount');
+    let FinalHeroCountElement = document.getElementById('FinalHeroCount');
+    
 
     //! adding socket listener on "data" <-- name, after that fire 'drawCreatures' function 
 
@@ -19,9 +23,9 @@ function setup() {
         matrix = data.matrix;
         grassCountElement.innerText = data.grassCounter;
         grassEaterCountElement.innerText = data.grassEaterCounter;
-        // YellowEaterCountElement.innerText = data.YellowEaterCounter;
-        // PredatorCountElement.innerText = data.PredatorCounter;
-        // FinalHeroCountElement.innerText = data.FinalHeroCounter;
+        YellowEaterCountElement.innerText = data.YellowEaterCounter;
+        PredatorCountElement.innerText = data.PredatorCounter;
+        FinalHeroCountElement.innerText = data.FinalHeroCounter;
         //! Every time it creates new Canvas woth new matrix size
         createCanvas(matrix[0].length * side, matrix.length * side)
         //! clearing background by setting it to new grey color
