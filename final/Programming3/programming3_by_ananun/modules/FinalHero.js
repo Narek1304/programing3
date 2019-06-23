@@ -107,6 +107,7 @@ module.exports = class FinalHero extends LiveForm {
             FinalHeroArr.push(newFinalHero)
             matrix[newCell[1]][newCell[0]] = 5;
             this.energy = 5;
+            FinalHeroHashiv++;
         }
     }
     die() {

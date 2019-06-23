@@ -15,11 +15,11 @@ PredatorArr = [];
 YellowEaterArr = [];
 FinalHeroArr = [];
 matrix = [];
-grassHashiv = 0;
-grassEaterHashiv = 0;
-YellowEaterHashiv = 0;
-PredatorHashiv = 0;
-FinalHeroHashiv = 0;
+grassHashiv = 10;
+grassEaterHashiv = 5;
+YellowEaterHashiv = 4;
+PredatorHashiv = 4;
+FinalHeroHashiv = 2;
 //! Setting global arrays  -- END
 
 
@@ -59,7 +59,7 @@ function matrixGenerator(matrixSize, grass, grassEater, YellowEater, Predator, F
         matrix[customY][customX] = 5;
     }
 }
-matrixGenerator(20, 1, 2, 2, 2, 1);
+matrixGenerator(20, 10, 5, 4, 4, 3);
 
 
 
@@ -93,7 +93,7 @@ function creatingObjects() {
             } else if (matrix[y][x] == 4) {
                 var predator = new Predator(x, y);
                 PredatorArr.push(predator);
-            } else if (matrix[y][x] == 5) {
+            } else if (matrix[y][x] == 5) {0
                 var finalHero = new FinalHero(x, y);
                 FinalHeroArr.push(finalHero);
             }
@@ -112,24 +112,32 @@ function game() {
     if (grassEaterArr[0] !== undefined) {
         for (var i in grassEaterArr) {
             grassEaterArr[i].eat();
+            grassEaterArr[i].mul();
+            grassEaterArr[i].die();
             
         }
     }
     if (YellowEaterArr[0] !== undefined) {
         for (var i in YellowEaterArr) {
             YellowEaterArr[i].eat();
+            YellowEaterArr[i].mul();
+            YellowEaterArr[i].die();
             
         }
     }
     if (PredatorArr[0] !== undefined) {
         for (var i in PredatorArr) {
             PredatorArr[i].eat();
+            PredatorArr[i].mul();
+            PredatorArr[i].die();
            
         }
     }
     if (FinalHeroArr[0] !== undefined) {
         for (var i in FinalHeroArr) {
             FinalHeroArr[i].eat();
+            FinalHeroArr[i].mul();
+            FinalHeroArr[i].die();
            
         }
     }
@@ -151,3 +159,35 @@ function game() {
 
 
 setInterval(game, 1000)
+
+
+
+
+
+weather = 'spring';
+
+setInterval(function () 
+{
+  if (weather == 'spring') 
+  {
+    weather = 'summer'; 
+    
+    
+  }
+
+  else if (weather == 'summer') 
+  {
+    weather = 'autumn';
+  }
+
+  else if (weather == 'autumn') 
+  {
+    weather = 'winter';
+    
+  }
+
+  else if (weather == 'winter') 
+  {
+    weather = 'spring';
+  }
+}, 5000)

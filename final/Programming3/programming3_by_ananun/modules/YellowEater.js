@@ -76,7 +76,7 @@ module.exports = class YellowEater extends LiveForm {
 
         if (this.energy >= 8 && newCell) {
             var newYellowEater = new YellowEater(newCell[0], newCell[1], this.index);
-            yellowEaterArr.push(newYellowEater);
+            YellowEaterArr.push(newYellowEater);
             matrix[newCell[1]][newCell[0]] = 3;
             this.energy = 5;
             YellowEaterHashiv++;
@@ -85,9 +85,9 @@ module.exports = class YellowEater extends LiveForm {
     die() {
         if (this.energy <= 0) {
             matrix[this.x][this.y] = 0;
-            for (var i in yellowEaterArr) {
-                if (this.x == yellowEaterArr[i].x && this.y == yellowEaterArr[i].y) {
-                    yellowEaterArr.splice(i, 1);
+            for (var i in YellowEaterArr) {
+                if (this.x == YellowEaterArr[i].x && this.y == YellowEaterArr[i].y) {
+                    YellowEaterArr.splice(i, 1);
                     break;
                 }
             }

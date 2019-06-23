@@ -46,7 +46,7 @@ module.exports = class Predator extends LiveForm {
     move() {
 
         // yntruma vandak
-        var newCell = random(this.chooseCell(3));
+        var newCell = random(this.chooseCell(0));
         this.energy--;
         if (newCell) {
             var newX = newCell[0];
@@ -105,6 +105,7 @@ module.exports = class Predator extends LiveForm {
             matrix[newCell[1]][newCell[0]] = 4;
             this.energy = 5;
             PredatorHashiv++;
+            
         }
     }
     die() {
